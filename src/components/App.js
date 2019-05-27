@@ -1,5 +1,5 @@
 import React from 'react';
-import { ThemeProvider, css } from 'styled-components/macro';
+import { ThemeProvider } from 'styled-components/macro';
 import theme from './theme';
 import { GlobalStyle, Tag } from './style';
 import { Text, Link, Box, Card, Flex, Button } from 'rebass';
@@ -7,7 +7,7 @@ import { Text, Link, Box, Card, Flex, Button } from 'rebass';
 function App() {
   const bar = (
     <Card border={1} px={2} pb={5} m={2}>
-      <Text as="h1" fontSize="h1" fontWeight={400}>
+      <Text as="h1" fontSize="h1" fontWeight={1} fontFamily={1}>
         帕客
       </Text>
       <Text as="h4" fontSize="h5" fontWeight={300}>
@@ -65,22 +65,24 @@ function App() {
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-        <Flex
-          width="1200px"
-          justifyContent="center"
-          css={{ border: '2px solid red' }}
-        >
-          {/* info / menu area */}
-          <Box>
-            {bar}
-            {tags}
-          </Box>
-          {/* main / article / list area */}
-          <Box flex={1}>
-            {article}
-            {article}
-            {article}
-          </Box>
+        <Flex justifyContent="center">
+          <Flex
+            width="1200px"
+            justifyContent="center"
+            // css={{ border: '2px solid red' }}
+          >
+            {/* info / menu area */}
+            <Box>
+              {bar}
+              {tags}
+            </Box>
+            {/* main / article / list area */}
+            <Box flex={1}>
+              {article}
+              {article}
+              {article}
+            </Box>
+          </Flex>
         </Flex>
       </>
     </ThemeProvider>

@@ -1,6 +1,6 @@
 const theme = {
   lineHeights: [1, 1.3, 1.5],
-  fontWeights: [300, 400, 700], // for Noto Sans TC
+  fontWeights: [300, 400, 600, 700], // for Noto Sans TC
   borders: ['none', '1px solid'],
   space: [0, '0.5rem', '1rem', '1.5rem', '2rem', '2.5rem'],
   colors: {
@@ -12,7 +12,8 @@ const theme = {
     secondaryText: '#757575',
     divider: '#BDBDBD',
     accent: '#FFC107'
-  }
+  },
+  fonts: ['Noto Sans TC', 'Noto Serif TC']
 };
 
 const fontSizes = [
