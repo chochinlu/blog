@@ -16,6 +16,7 @@ function App() {
           <Flex
             width="1200px"
             justifyContent="center"
+            flexDirection={['column', 'column', 'column', 'row']}
             // css={{ border: '2px solid red' }}
           >
             {/* info / menu area */}

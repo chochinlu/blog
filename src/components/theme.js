@@ -46,4 +46,13 @@ theme.fontSizes = {
   overline: fontSizes[0]
 };
 
+// based on bootstrap 4
+const breakpoints = ['576px', '776px', '992px', '1200px'];
+breakpoints.sm = breakpoints[0];
+breakpoints.md = breakpoints[1];
+breakpoints.lg = breakpoints[2];
+breakpoints.xl = breakpoints[3];
+
+theme.breakpoints = breakpoints;
+
 export default theme;

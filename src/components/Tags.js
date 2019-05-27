@@ -1,33 +1,39 @@
 import React from 'react';
-import { Box, Card, Button } from 'rebass';
+import { Card, Button, Flex } from 'rebass';
 import { Tag } from './style';
 
-const Tags = () => (
+const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
+
+const Tags = props => (
   <Card border={1} px={2} pt={5} pb={5} m={2}>
-    <Box mb={2}>
-      {['React', 'JavaScript', 'CSS', 'NodeJS'].map(tag => (
+    <Flex mb={2} flexWrap={true}>
+      {tagList.map((tag, index) => (
         <Tag
+          flex={1}
           key={tag}
           color="primaryText"
           bg="text"
           border={1}
           fontSize="body1"
-          mr={2}
           borderRadius="none"
+          mr={index === tagList.length - 1 ? 0 : 1}
         >
           {tag}
         </Tag>
       ))}
-    </Box>
-    <Button
-      borderRadius="none"
-      fontSize="body1"
-      bg="text"
-      color="primaryText"
-      border={1}
-    >
-      所有標籤
-    </Button>
+    </Flex>
+    <Flex>
+      <Button
+        flex={1}
+        borderRadius="none"
+        fontSize="body1"
+        bg="text"
+        color="primaryText"
+        border={1}
+      >
+        所有標籤
+      </Button>
+    </Flex>
   </Card>
 );
 
