@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 import theme from './theme';
 import { GlobalStyle } from './style';
@@ -28,13 +28,13 @@ function App() {
             </Box>
             {/* main / article / list area */}
             <Box flex={1}>
-              {articles.slice(0, 2).map(article => (
-                <ArticleBlock article={article} />
+              {articles.slice(0, 10).map(article => (
+                <ArticleBlock key={article.id} article={article} />
               ))}
             </Box>
           </Flex>
         </Flex>
-        <pre>{JSON.stringify(articles[0], null, 2)}</pre>
+        {/* <pre>{JSON.stringify(articles[0], null, 2)}</pre> */}
       </>
     </ThemeProvider>
   );
