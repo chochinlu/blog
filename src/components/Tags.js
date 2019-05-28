@@ -6,7 +6,7 @@ const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
 
 const Tags = props => (
   <Card border={1} px={2} pt={5} pb={5} m={2}>
-    <Flex mb={2} flexWrap={true}>
+    <Flex mb={2}>
       {tagList.map((tag, index) => (
         <Tag
           flex={1}

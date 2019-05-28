@@ -1,17 +1,19 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 import theme from './theme';
 import { GlobalStyle } from './style';
 import { Box, Flex } from 'rebass';
 import Bar from './Bar';
 import Tags from './Tags';
-import Article from './Article';
+import ArticleBlock from './ArticleBlock';
+import articles from '../articles.json';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
+
         <Flex justifyContent="center">
           <Flex
             width="1200px"
@@ -26,14 +28,13 @@ function App() {
             </Box>
             {/* main / article / list area */}
             <Box flex={1}>
-              <Article />
-              <Article />
-              <Article />
-              <Article />
-              <Article />
+              {articles.slice(0, 2).map(article => (
+                <ArticleBlock article={article} />
+              ))}
             </Box>
           </Flex>
         </Flex>
+        <pre>{JSON.stringify(articles[0], null, 2)}</pre>
       </>
     </ThemeProvider>
   );
