@@ -6,7 +6,10 @@ import { Box, Flex } from 'rebass';
 import Bar from './Bar';
 import Tags from './Tags';
 import axios from 'axios';
-import Main from './Main';
+import ArticleLinkList from './ArticleLinkList';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import NotMatch from './NotMatch';
+import Article from './Article';
 
 const initUrl =
   'https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10';
@@ -47,7 +50,7 @@ function App() {
         setFetching(false);
       }
     };
-    // getResult(url);
+    getResult();
   }, [url]);
 
   const left = (
@@ -57,27 +60,43 @@ function App() {
     </Box>
   );
 
+  const routes = (
+    <Switch>
+      <Route
+        exact
+        path="/"
+        component={() => (
+          <ArticleLinkList
+            fetching={fetching}
+            navLinks={navLinks}
+            articles={articles}
+            setUrl={setUrl}
+          />
+        )}
+      />
+      <Route path="/article/:id" component={Article} />
+      <Route component={NotMatch} />
+    </Switch>
+  );
+
   return (
-    <ThemeProvider theme={theme}>
-      <>
-        <GlobalStyle />
-        <Flex justifyContent="center">
-          <Flex
-            width="1200px"
-            justifyContent="center"
-            flexDirection={['column', 'column', 'column', 'row']}
-          >
-            {left}
-            <Main
-              fetching={fetching}
-              navLinks={navLinks}
-              articles={articles}
-              setUrl={setUrl}
-            />
+    <BrowserRouter basename="blog">
+      <ThemeProvider theme={theme}>
+        <>
+          <GlobalStyle />
+          <Flex justifyContent="center">
+            <Flex
+              width="1200px"
+              justifyContent="center"
+              flexDirection={['column', 'column', 'column', 'row']}
+            >
+              {left}
+              {routes}
+            </Flex>
           </Flex>
-        </Flex>
-      </>
-    </ThemeProvider>
+        </>
+      </ThemeProvider>
+    </BrowserRouter>
   );
 }
 

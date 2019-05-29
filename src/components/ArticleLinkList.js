@@ -1,6 +1,7 @@
 import React from 'react';
 import { Box, Flex, Button, Heading } from 'rebass';
-import ArticleBlock from './ArticleBlock';
+import ArticleLink from './ArticleLink';
+import styled from 'styled-components/macro';
 
 const ActionButton = props => {
   const handleClick = e => {
@@ -27,7 +28,7 @@ const ActionButton = props => {
   );
 };
 
-const Main = ({ fetching, navLinks, articles, setUrl }) => {
+const ArticleLinkList = ({ fetching, navLinks, articles, setUrl }) => {
   const buttons = () => {
     let items = [
       { rel: 'first', title: '最前頁', url: null },
@@ -68,7 +69,7 @@ const Main = ({ fetching, navLinks, articles, setUrl }) => {
 
       {articles &&
         articles.map(article => (
-          <ArticleBlock key={article.id} article={article} />
+          <ArticleLink key={article.id} article={article} />
         ))}
 
       {navLinks && (
@@ -83,4 +84,4 @@ const Main = ({ fetching, navLinks, articles, setUrl }) => {
     </Box>
   );
 };
-export default Main;
+export default ArticleLinkList;

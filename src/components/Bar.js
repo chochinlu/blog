@@ -1,17 +1,26 @@
 import React from 'react';
 import { Text, Link, Card, Flex } from 'rebass';
+import styled from 'styled-components/macro';
 
-const Bar = () => (
+const Bar = props => (
   <Card border={1} px={2} pb={[1, 1, 1, 5]} m={2}>
     <Flex
       flexDirection={['row', 'row', 'row', 'column']}
       alignItems={['center', 'center', 'center', 'flex-start']}
     >
       <Text
-        as="h1"
+        as="a"
+        href="/"
         fontSize={['h3', 'h2', 'h2', 'h1']}
         fontWeight={1}
         fontFamily={1}
+        color="primaryText"
+        css={`
+          :visited,
+          :hover {
+            color: inherit;
+          }
+        `}
       >
         帕客
       </Text>
