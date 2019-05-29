@@ -1,40 +1,81 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { ThemeProvider } from 'styled-components/macro';
 import theme from './theme';
 import { GlobalStyle } from './style';
 import { Box, Flex } from 'rebass';
 import Bar from './Bar';
 import Tags from './Tags';
-import ArticleBlock from './ArticleBlock';
-import articles from '../articles.json';
+import axios from 'axios';
+import Main from './Main';
+
+const initUrl =
+  'https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10';
+
+const requestConfig = {
+  headers: { Authorization: `token ${process.env.REACT_APP_TOKEN}` }
+};
+
+const getNavLinks = source =>
+  source.split(',').map(linkStr => {
+    let [url, rel] = linkStr.split(';');
+    url = url.trim();
+    url = url.slice(1, url.length - 1);
+    rel = rel.split('=')[1];
+    rel = rel.slice(1, rel.length - 1);
+    return { rel, url };
+  });
 
 function App() {
+  // const [itemPerPage, setItemPerPage] = useState(10);
+  const [url, setUrl] = useState(initUrl);
+  const [fetching, setFetching] = useState(false);
+  const [navLinks, setNavLinks] = useState(null);
+  const [articles, setArticles] = useState(null);
+
+  useEffect(() => {
+    const getResult = async () => {
+      try {
+        setFetching(true);
+        const result = await axios.get(url, requestConfig);
+        setArticles([...result.data]);
+
+        const navLinks = getNavLinks(result.headers.link);
+        setNavLinks([...navLinks]);
+      } catch (err) {
+        console.log('Err: ', err.message);
+      } finally {
+        setFetching(false);
+      }
+    };
+    // getResult(url);
+  }, [url]);
+
+  const left = (
+    <Box>
+      <Bar />
+      <Tags />
+    </Box>
+  );
+
   return (
     <ThemeProvider theme={theme}>
       <>
         <GlobalStyle />
-
         <Flex justifyContent="center">
           <Flex
             width="1200px"
             justifyContent="center"
             flexDirection={['column', 'column', 'column', 'row']}
-            // css={{ border: '2px solid red' }}
           >
-            {/* info / menu area */}
-            <Box>
-              <Bar />
-              <Tags />
-            </Box>
-            {/* main / article / list area */}
-            <Box flex={1}>
-              {articles.slice(0, 10).map(article => (
-                <ArticleBlock key={article.id} article={article} />
-              ))}
-            </Box>
+            {left}
+            <Main
+              fetching={fetching}
+              navLinks={navLinks}
+              articles={articles}
+              setUrl={setUrl}
+            />
           </Flex>
         </Flex>
-        {/* <pre>{JSON.stringify(articles[0], null, 2)}</pre> */}
       </>
     </ThemeProvider>
   );
