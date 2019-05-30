@@ -39,4 +39,8 @@ export const StyledReactMarkdown = styled(ReactMarkdown)`
   h1, h2, h3, h4, h5, h6, p, pre {
     margin-bottom: ${props => props.theme.space[3]};
   }
+
+  pre {
+    white-space: pre-wrap; 
+  }
 `;

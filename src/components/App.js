@@ -65,7 +65,7 @@ function App() {
       <Route
         exact
         path="/"
-        component={() => (
+        render={() => (
           <ArticleLinkList
             fetching={fetching}
             navLinks={navLinks}
@@ -74,7 +74,10 @@ function App() {
           />
         )}
       />
-      <Route path="/article/:id" component={Article} />
+      <Route
+        path="/article/:id"
+        render={props => <Article {...props} articles={articles} />}
+      />
       <Route component={NotMatch} />
     </Switch>
   );
@@ -86,7 +89,7 @@ function App() {
           <GlobalStyle />
           <Flex justifyContent="center">
             <Flex
-              width="1200px"
+              width={[1, 1, 1, '1200px']}
               justifyContent="center"
               flexDirection={['column', 'column', 'column', 'row']}
             >

@@ -1,6 +1,7 @@
 import React from 'react';
-import { Text, Link, Card, Flex } from 'rebass';
+import { Text, Link as HtmlLink, Card, Flex } from 'rebass';
 import styled from 'styled-components/macro';
+import { Link } from 'react-router-dom';
 
 const Bar = props => (
   <Card border={1} px={2} pb={[1, 1, 1, 5]} m={2}>
@@ -8,22 +9,23 @@ const Bar = props => (
       flexDirection={['row', 'row', 'row', 'column']}
       alignItems={['center', 'center', 'center', 'flex-start']}
     >
-      <Text
-        as="a"
-        href="/"
-        fontSize={['h3', 'h2', 'h2', 'h1']}
-        fontWeight={1}
-        fontFamily={1}
-        color="primaryText"
+      <Link
+        to="/"
         css={`
+          display: inline-block;
+          width: 100%;
+          :link,
           :visited,
-          :hover {
+          :hover,
+          &:active {
             color: inherit;
           }
         `}
       >
-        帕客
-      </Text>
+        <Text fontSize={['h3', 'h2', 'h2', 'h1']} fontWeight={1} fontFamily={1}>
+          帕客
+        </Text>
+      </Link>
       <Flex flexDirection="column" ml={2} justifyContent="baseline" mt={1}>
         <Text
           as="h4"
@@ -32,7 +34,7 @@ const Bar = props => (
         >
           讀書翻譯, 心得, 技術筆記。
         </Text>
-        <Link
+        <HtmlLink
           href="#"
           css={`
             text-decoration: none;
@@ -42,7 +44,7 @@ const Bar = props => (
           <Text as="h5" fontSize="subtitle1" color="secondaryText">
             @chochinlu
           </Text>
-        </Link>
+        </HtmlLink>
       </Flex>
     </Flex>
   </Card>

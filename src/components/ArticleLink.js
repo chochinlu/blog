@@ -21,16 +21,18 @@ const ArticleLink = ({ article, theme }) => (
         }
       `}
     >
-      <Flex alignItems="center">
-        <Heading as="h1" fontSize="h6" pb={2} color="primaryDark" flex={1}>
+      <Flex alignItems="center" justifyContent="space-between">
+        <Heading as="h1" fontSize="h6" pb={2} color="primaryDark">
           {article.title}
         </Heading>
-        <Heading as="h3" fontSize="body1" fontWeight={1} mr={2}>
-          {formatedDate(article.updated_at)}
-        </Heading>
-        <Heading as="h3" fontSize="overline" fontWeight={1}>
-          (Created At {formatedDate(article.created_at)})
-        </Heading>
+        <Box>
+          <Heading as="h3" fontSize="body1" fontWeight={1}>
+            {formatedDate(article.updated_at)}
+          </Heading>
+          <Heading as="h3" fontSize="overline" fontWeight={1}>
+            (Created At {formatedDate(article.created_at)})
+          </Heading>
+        </Box>
       </Flex>
     </Link>
 
