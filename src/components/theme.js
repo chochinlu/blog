@@ -1,7 +1,7 @@
 const theme = {
   lineHeights: [1, 1.3, 1.5, 1.8],
   fontWeights: [300, 400, 600, 700], // for Noto Sans TC
-  borders: ['none', '1px solid'],
+  borders: ['none', '1px solid', '2px solid'],
   space: [0, '0.5rem', '1rem', '1.5rem', '2rem', '2.5rem'],
   colors: {
     primary: '#8BC34A', //green

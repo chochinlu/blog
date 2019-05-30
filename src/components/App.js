@@ -87,7 +87,12 @@ function App() {
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
-          <Flex justifyContent="center">
+          <Flex
+            justifyContent="center"
+            css={`
+              background: rgba(104, 159, 56, 0.2);
+            `}
+          >
             <Flex
               width={[1, 1, 1, '1200px']}
               justifyContent="center"

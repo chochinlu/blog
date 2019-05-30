@@ -19,22 +19,15 @@ const Article = props => {
   return (
     <Box flex={1}>
       <Card
-        border={1}
-        borderColor="secondaryText"
+        border={2}
+        borderColor="text"
         px={2}
         pt={2}
         pb={4}
         m={2}
         color="primaryText"
       >
-        <Heading
-          as="h1"
-          fontSize="h3"
-          color="primaryDark"
-          css={`
-            // border: 1px solid red;
-          `}
-        >
+        <Heading as="h1" fontSize="h3" color="primaryDark">
           {article.title}
         </Heading>
         <Flex
@@ -42,7 +35,7 @@ const Article = props => {
           justifyContent="flex-end"
           pb={1}
           css={`
-            border-bottom: 1px solid black;
+            border-bottom: 1px solid ${props => props.theme.colors.text};
           `}
         >
           <Heading as="h3" fontSize="body1" mr={2}>

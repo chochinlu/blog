@@ -1,31 +1,38 @@
 import React from 'react';
-import { Text, Link as HtmlLink, Card, Flex } from 'rebass';
+import { Text, Link as HtmlLink, Card, Flex, Box } from 'rebass';
 import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
 const Bar = props => (
-  <Card border={1} borderColor="secondaryText" px={2} pb={[1, 1, 1, 5]} m={2}>
+  <Card border={2} borderColor="text" px={2} pb={[1, 1, 1, 5]} m={2}>
     <Flex
       flexDirection={['row', 'row', 'row', 'column']}
       alignItems={['center', 'center', 'center', 'flex-start']}
+      justifyContent={['space-between', 'space-between', 'space-between']}
     >
-      <Link
-        to="/"
-        css={`
-          display: inline-block;
-          width: 100%;
-          :link,
-          :visited,
-          :hover,
-          &:active {
-            color: inherit;
-          }
-        `}
-      >
-        <Text fontSize={['h3', 'h2', 'h2', 'h1']} fontWeight={1} fontFamily={1}>
-          帕客
-        </Text>
-      </Link>
+      <Box>
+        <Link
+          to="/"
+          css={`
+            display: inline-block;
+            width: 100%;
+            :link,
+            :visited,
+            :hover,
+            &:active {
+              color: inherit;
+            }
+          `}
+        >
+          <Text
+            fontSize={['h3', 'h2', 'h2', 'h1']}
+            fontWeight={1}
+            fontFamily={1}
+          >
+            帕客
+          </Text>
+        </Link>
+      </Box>
       <Flex flexDirection="column" ml={2} justifyContent="baseline" mt={1}>
         <Text
           as="h4"
