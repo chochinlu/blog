@@ -18,7 +18,15 @@ const Article = props => {
 
   return (
     <Box flex={1}>
-      <Card border={1} px={2} pt={2} pb={4} m={2} color="primaryText">
+      <Card
+        border={1}
+        borderColor="secondaryText"
+        px={2}
+        pt={2}
+        pb={4}
+        m={2}
+        color="primaryText"
+      >
         <Heading
           as="h1"
           fontSize="h3"
@@ -48,9 +56,11 @@ const Article = props => {
         <StyledReactMarkdown
           source={article.body}
           color="primaryText"
-          fontSize="body2"
-          lineHeight={2}
+          fontSize="body1"
+          fontWeight={1}
+          lineHeight={3}
           p={2}
+          mt={2}
         />
       </Card>
       <Flex>
@@ -62,7 +72,7 @@ const Article = props => {
           borderRadius="none"
           border={1}
           mx={2}
-          mb={2}
+          mb={3}
         >
           <Link
             to="/"

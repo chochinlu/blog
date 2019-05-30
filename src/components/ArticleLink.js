@@ -9,7 +9,7 @@ import styled from 'styled-components/macro';
 const formatedDate = date => format(date, 'YYYY-MM-DD');
 
 const ArticleLink = ({ article, theme }) => (
-  <Card m={2} border={1} px={2} py={5}>
+  <Card m={2} border={1} borderColor="secondaryText" px={2} py={5}>
     <Link
       to={`article/${article.number}`}
       css={`

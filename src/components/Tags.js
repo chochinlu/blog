@@ -6,7 +6,7 @@ import styled from 'styled-components/macro';
 const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
 
 const Tags = props => (
-  <Card border={1} px={2} pt={5} pb={5} m={2}>
+  <Card border={1} borderColor="secondaryText" px={2} pt={5} pb={5} m={2}>
     <Flex mb={2} flexDirection={['column', 'row', 'row', 'row']}>
       {tagList.map((tag, index) => (
         <Tag

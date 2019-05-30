@@ -4,7 +4,7 @@ import styled from 'styled-components/macro';
 import { Link } from 'react-router-dom';
 
 const Bar = props => (
-  <Card border={1} px={2} pb={[1, 1, 1, 5]} m={2}>
+  <Card border={1} borderColor="secondaryText" px={2} pb={[1, 1, 1, 5]} m={2}>
     <Flex
       flexDirection={['row', 'row', 'row', 'column']}
       alignItems={['center', 'center', 'center', 'flex-start']}
