@@ -5,6 +5,9 @@ import styled from 'styled-components/macro';
 
 const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
 
+const url = label =>
+  `https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10&labels=${label}`;
+
 const Tags = props => (
   <Card border={2} borderColor="text" px={2} pt={5} pb={5} m={2}>
     <Flex mb={2} flexDirection="column">
@@ -18,6 +21,7 @@ const Tags = props => (
           fontSize="body1"
           borderRadius="none"
           mb={index === tagList.length - 1 ? 0 : 2}
+          onClick={e => props.setUrl(url(tag))}
         >
           {tag}
         </Tag>
@@ -31,8 +35,9 @@ const Tags = props => (
         bg="text"
         color="primaryText"
         border={1}
+        onClick={e => props.setUrl(props.initUrl)}
       >
-        所有標籤
+        所有內容
       </Button>
     </Flex>
   </Card>

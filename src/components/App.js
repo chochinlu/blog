@@ -61,7 +61,7 @@ function App() {
   const left = (
     <Box>
       <Bar />
-      <Tags />
+      <Tags setUrl={setUrl} initUrl={initUrl} />
     </Box>
   );
 
