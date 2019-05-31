@@ -1,21 +1,24 @@
 import React from 'react';
-import { Card, Heading } from 'rebass';
+import { Card, Box, Heading } from 'rebass';
 
 const NotMatch = props => {
+  const articleRef = React.createRef();
   return (
-    <Card
-      border={1}
-      borderColor="secondaryText"
-      px={2}
-      py={4}
-      m={2}
-      flex={1}
-      color="secondaryText"
-    >
-      <Heading as="h3" fontSize="h4">
-        404 Not Found
-      </Heading>
-    </Card>
+    <Box flex={1} ref={articleRef}>
+      <Card
+        border={2}
+        borderColor="text"
+        px={2}
+        pt={2}
+        pb={4}
+        m={2}
+        color="primaryText"
+      >
+        <Heading as="h3" fontSize="h4">
+          404 Not Found
+        </Heading>
+      </Card>
+    </Box>
   );
 };
 

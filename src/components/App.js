@@ -35,6 +35,11 @@ function App() {
   const [navLinks, setNavLinks] = useState(null);
   const [articles, setArticles] = useState(null);
 
+  const appRef = React.createRef();
+  useEffect(() => {
+    window.scrollTo(0, appRef.current.offsetTop);
+  }, [appRef]);
+
   useEffect(() => {
     const getResult = async () => {
       try {
@@ -88,8 +93,10 @@ function App() {
         <>
           <GlobalStyle />
           <Flex
+            ref={appRef}
             justifyContent="center"
             css={`
+              min-height: 100vh;
               background-image: linear-gradient(
                 to top,
                 rgba(104, 159, 56, 0.5),

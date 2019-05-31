@@ -1,25 +1,93 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
 import { StyledReactMarkdown } from './style';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-import { article } from '../data';
+import { article as demoArticle } from '../data';
 import styled from 'styled-components/macro';
+import axios from 'axios';
 
 // TODO: should move to util
 const formatedDate = date => format(date, 'YYYY-MM-DD');
 
+const requestConfig = {
+  headers: { Authorization: `token ${process.env.REACT_APP_TOKEN}` }
+};
+
+const url = id => `https://api.github.com/repos/chochinlu/blog/issues/${id}`;
+
 const Article = props => {
+  const [fetching, setFetching] = useState(false);
+  const [article, setArticle] = useState(null);
   const articleRef = React.createRef();
 
-  const id = props.match.params.id;
-  // const article = props.articles.find(a => a.number === parseInt(id, 10));
+  const getResult = async id => {
+    try {
+      setFetching(true);
+      const result = await axios.get(url(id), requestConfig);
+      setArticle(result.data);
+    } catch (err) {
+      console.log('Err: ', err.message);
+    } finally {
+      setFetching(false);
+    }
+  };
 
-  // if props.articles === null useeffect fetch
+  useEffect(() => {
+    const id = props.match.params.id;
+    console.log(id);
+
+    if (!props.articles) {
+      // setArticle(demoArticle);
+      getResult(id);
+    } else {
+      const result = props.articles.find(a => a.number === parseInt(id, 10));
+      setArticle(result);
+    }
+  }, []);
 
   useEffect(() => {
     window.scrollTo(0, articleRef.current.offsetTop);
   }, [articleRef]);
+
+  //redirect
+  if (!article && !fetching)
+    return (
+      <Box flex={1} ref={articleRef}>
+        <Card
+          border={2}
+          borderColor="text"
+          px={2}
+          pt={2}
+          pb={4}
+          m={2}
+          color="primaryText"
+        >
+          <Heading as="h3" fontSize="h4" ml={2} mt={2}>
+            Not Found
+          </Heading>
+        </Card>
+      </Box>
+    );
+
+  if (!article && fetching)
+    return (
+      <Box flex={1} ref={articleRef}>
+        <Card
+          border={2}
+          borderColor="text"
+          px={2}
+          pt={2}
+          pb={4}
+          m={2}
+          color="primaryText"
+        >
+          <Heading as="h3" fontSize="h6" ml={2} mt={2}>
+            Fetching Data ....
+          </Heading>
+        </Card>
+      </Box>
+    );
 
   return (
     <Box flex={1} ref={articleRef}>
@@ -50,7 +118,6 @@ const Article = props => {
             {formatedDate(article.updated_at)}
           </Heading>
         </Flex>
-
         <StyledReactMarkdown
           source={article.body}
           color="primaryText"
