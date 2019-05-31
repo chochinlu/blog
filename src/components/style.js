@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { space, fontSize, fontWeight, color, lineHeight } from 'styled-system';
 import { Button } from 'rebass';
 import ReactMarkdown from 'react-markdown';
+import { Link } from 'react-router-dom';
 
 export const GlobalStyle = createGlobalStyle`
   *,*::before, *::after {
@@ -23,6 +24,17 @@ export const GlobalStyle = createGlobalStyle`
 
 export const Tag = styled(Button)`
   ${space}
+`;
+
+export const StyledLink = styled(Link)`
+  display: inline-block;
+  width: 100%;
+  :link,
+  :visited,
+  :hover,
+  &:active {
+    color: inherit;
+  }
 `;
 
 export const StyledReactMarkdown = styled(ReactMarkdown)`

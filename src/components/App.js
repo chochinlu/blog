@@ -10,13 +10,7 @@ import ArticleLinkList from './ArticleLinkList';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import NotMatch from './NotMatch';
 import Article from './Article';
-
-const initUrl =
-  'https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10';
-
-const requestConfig = {
-  headers: { Authorization: `token ${process.env.REACT_APP_TOKEN}` }
-};
+import { initUrl, requestConfig } from '../utils';
 
 const getNavLinks = source =>
   source.split(',').map(linkStr => {

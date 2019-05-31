@@ -1,19 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
 import { StyledReactMarkdown } from './style';
-import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components/macro';
 import axios from 'axios';
-
-// TODO: should move to util
-const formatedDate = date => format(date, 'YYYY-MM-DD');
-
-const requestConfig = {
-  headers: { Authorization: `token ${process.env.REACT_APP_TOKEN}` }
-};
-
-const url = id => `https://api.github.com/repos/chochinlu/blog/issues/${id}`;
+import { issueUrl, formatedDate, requestConfig } from '../utils';
 
 const Article = props => {
   const [fetching, setFetching] = useState(false);
@@ -23,7 +14,7 @@ const Article = props => {
   const getResult = async id => {
     try {
       setFetching(true);
-      const result = await axios.get(url(id), requestConfig);
+      const result = await axios.get(issueUrl(id), requestConfig);
       setArticle(result.data);
     } catch (err) {
       console.log('Err: ', err.message);
@@ -38,8 +29,8 @@ const Article = props => {
     if (!props.articles) {
       getResult(id);
     } else {
-      const result = props.articles.find(a => a.number === parseInt(id, 10));
-      setArticle(result);
+      let result = props.articles.find(a => a.number === parseInt(id, 10));
+      result ? setArticle(result) : getResult(id);
     }
   }, [props.articles, props.match.params.id]);
 

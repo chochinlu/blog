@@ -1,7 +1,7 @@
 import React from 'react';
 import { Text, Link as HtmlLink, Card, Flex, Box } from 'rebass';
 import styled from 'styled-components/macro';
-import { Link } from 'react-router-dom';
+import { StyledLink } from './style';
 
 const Bar = props => (
   <Card border={2} borderColor="text" px={2} pb={[1, 1, 1, 5]} m={2}>
@@ -11,19 +11,7 @@ const Bar = props => (
       justifyContent={['space-between', 'space-between', 'space-between']}
     >
       <Box>
-        <Link
-          to="/"
-          css={`
-            display: inline-block;
-            width: 100%;
-            :link,
-            :visited,
-            :hover,
-            &:active {
-              color: inherit;
-            }
-          `}
-        >
+        <StyledLink to="/">
           <Text
             fontSize={['h3', 'h2', 'h2', 'h1']}
             fontWeight={1}
@@ -31,7 +19,7 @@ const Bar = props => (
           >
             帕客
           </Text>
-        </Link>
+        </StyledLink>
       </Box>
       <Flex flexDirection="column" ml={2} justifyContent="baseline" mt={1}>
         <Text

@@ -2,6 +2,7 @@ import React from 'react';
 import { Card, Button, Flex } from 'rebass';
 import { Tag } from './style';
 import styled from 'styled-components/macro';
+import { StyledLink } from './style';
 
 const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
 
@@ -23,7 +24,7 @@ const Tags = props => (
           mb={index === tagList.length - 1 ? 0 : 2}
           onClick={e => props.setUrl(url(tag))}
         >
-          {tag}
+          <StyledLink to="/">{tag}</StyledLink>
         </Tag>
       ))}
     </Flex>
