@@ -56,12 +56,14 @@ export const StyledReactMarkdown = styled(ReactMarkdown)`
   }
 
   pre {
-    white-space: pre-wrap; 
+    max-width: 700px;
+    overflow-y: auto;
     padding: ${props => props.theme.space[4]};
 
     code {
       font-size: ${props => props.theme.fontSizes.body1};
       line-height: ${props => props.theme.lineHeights[0]};
+      padding: 0;
     }
   }
 
