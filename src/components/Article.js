@@ -1,6 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
-import ReactMarkdown from 'react-markdown';
 import { StyledReactMarkdown } from './style';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
@@ -11,13 +10,19 @@ import styled from 'styled-components/macro';
 const formatedDate = date => format(date, 'YYYY-MM-DD');
 
 const Article = props => {
+  const articleRef = React.createRef();
+
   const id = props.match.params.id;
   // const article = props.articles.find(a => a.number === parseInt(id, 10));
 
   // if props.articles === null useeffect fetch
 
+  useEffect(() => {
+    window.scrollTo(0, articleRef.current.offsetTop);
+  }, [articleRef]);
+
   return (
-    <Box flex={1}>
+    <Box flex={1} ref={articleRef}>
       <Card
         border={2}
         borderColor="text"
@@ -82,6 +87,19 @@ const Article = props => {
           >
             Back
           </Link>
+        </Button>
+        <Button
+          flex={1}
+          bg="text"
+          color="primaryText"
+          fontSize="body1"
+          borderRadius="none"
+          border={1}
+          mx={2}
+          mb={3}
+          onClick={() => window.scrollTo(0, articleRef.current.offsetTop)}
+        >
+          Top
         </Button>
       </Flex>
     </Box>

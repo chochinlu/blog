@@ -90,7 +90,13 @@ function App() {
           <Flex
             justifyContent="center"
             css={`
-              background: rgba(104, 159, 56, 0.2);
+              background-image: linear-gradient(
+                to top,
+                rgba(104, 159, 56, 0.5),
+                rgba(245, 245, 245, 0.9)
+              );
+              background-size: cover;
+              background-position: top;
             `}
           >
             <Flex
