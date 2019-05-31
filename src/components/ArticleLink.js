@@ -1,8 +1,6 @@
 import React from 'react';
 import { Flex, Box, Card, Heading } from 'rebass';
 import { Link } from 'react-router-dom';
-import ReactMarkdown from 'react-markdown';
-import { StyledReactMarkdown } from './style';
 import { format } from 'date-fns';
 import styled from 'styled-components/macro';
 

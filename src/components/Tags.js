@@ -1,5 +1,5 @@
 import React from 'react';
-import { Card, Button, Flex, Box } from 'rebass';
+import { Card, Button, Flex } from 'rebass';
 import { Tag } from './style';
 import styled from 'styled-components/macro';
 

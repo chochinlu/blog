@@ -1,5 +1,5 @@
 import React from 'react';
-import { Box, Flex, Button, Heading } from 'rebass';
+import { Box, Flex, Heading } from 'rebass';
 import ArticleLink from './ArticleLink';
 import styled from 'styled-components/macro';
 import ActionButton from './ActionButton';

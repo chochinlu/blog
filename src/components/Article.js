@@ -3,7 +3,6 @@ import { Box, Card, Heading, Flex, Button } from 'rebass';
 import { StyledReactMarkdown } from './style';
 import { format } from 'date-fns';
 import { Link } from 'react-router-dom';
-import { article as demoArticle } from '../data';
 import styled from 'styled-components/macro';
 import axios from 'axios';
 
@@ -35,16 +34,14 @@ const Article = props => {
 
   useEffect(() => {
     const id = props.match.params.id;
-    console.log(id);
 
     if (!props.articles) {
-      // setArticle(demoArticle);
       getResult(id);
     } else {
       const result = props.articles.find(a => a.number === parseInt(id, 10));
       setArticle(result);
     }
-  }, []);
+  }, [props.articles, props.match.params.id]);
 
   useEffect(() => {
     window.scrollTo(0, articleRef.current.offsetTop);
