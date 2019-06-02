@@ -37,6 +37,11 @@ const Tags = props => (
         color="primaryText"
         border={1}
         onClick={e => props.setUrl(props.initUrl)}
+        css={`
+          :focus {
+            outline: none;
+          }
+        `}
       >
         所有內容
       </Button>

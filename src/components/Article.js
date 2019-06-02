@@ -135,8 +135,11 @@ const Article = props => {
               :link,
               :visited,
               :hover,
-              &:active {
+              :active {
                 color: inherit;
+              }
+              :focus {
+                outline: none;
               }
             `}
           >
@@ -153,6 +156,11 @@ const Article = props => {
           mx={2}
           mb={3}
           onClick={() => window.scrollTo(0, articleRef.current.offsetTop)}
+          css={`
+            :focus {
+              outline: none;
+            }
+          `}
         >
           Top
         </Button>

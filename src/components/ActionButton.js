@@ -1,5 +1,6 @@
 import React from 'react';
 import { Button } from 'rebass';
+import styled from 'styled-components/macro';
 
 const ActionButton = props => {
   const handleClick = e => {
@@ -17,6 +18,9 @@ const ActionButton = props => {
       border={1}
       css={`
         cursor: pointer;
+        :focus {
+          outline: none;
+        }
       `}
       onClick={handleClick}
       disabled={props.url === null}

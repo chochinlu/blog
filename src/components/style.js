@@ -32,8 +32,11 @@ export const StyledLink = styled(Link)`
   :link,
   :visited,
   :hover,
-  &:active {
+  :active {
     color: inherit;
+  }
+  :focus {
+    outline: none;
   }
 `;
 
