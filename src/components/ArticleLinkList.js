@@ -1,10 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Box, Flex, Heading } from 'rebass';
 import ArticleLink from './ArticleLink';
 import styled from 'styled-components/macro';
 import ActionButton from './ActionButton';
 
 const ArticleLinkList = ({ fetching, navLinks, articles, setUrl }) => {
+  const appRef = React.createRef();
+  useEffect(() => {
+    window.scrollTo(0, appRef.current.offsetTop);
+  }, [appRef]);
+
   const buttons = () => {
     let items = [
       { rel: 'first', title: '最前頁', url: null },
@@ -36,7 +41,7 @@ const ArticleLinkList = ({ fetching, navLinks, articles, setUrl }) => {
   };
 
   return (
-    <Box flex={1}>
+    <Box flex={1} ref={appRef}>
       {fetching && (
         <Heading as="h3" fontSize="h6" ml={2} mt={2}>
           Fetching Data ....
