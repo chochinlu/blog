@@ -63,7 +63,7 @@ function App() {
     <Switch>
       <Route
         exact
-        path="/"
+        path={process.env.PUBLIC_URL + '/'}
         render={() => (
           <ArticleLinkList
             fetching={fetching}
@@ -74,7 +74,7 @@ function App() {
         )}
       />
       <Route
-        path="/article/:id"
+        path={process.env.PUBLIC_URL + '/article/:id'}
         render={props => <Article {...props} articles={articles} />}
       />
       <Route component={NotMatch} />
@@ -82,7 +82,7 @@ function App() {
   );
 
   return (
-    <BrowserRouter basename="blog">
+    <BrowserRouter basename="/blog">
       <ThemeProvider theme={theme}>
         <>
           <GlobalStyle />
