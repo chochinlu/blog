@@ -63,7 +63,7 @@ function App() {
     <Switch>
       <Route
         exact
-        path={process.env.PUBLIC_URL + '/'}
+        path="/"
         render={() => (
           <ArticleLinkList
             fetching={fetching}
@@ -74,7 +74,7 @@ function App() {
         )}
       />
       <Route
-        path={process.env.PUBLIC_URL + '/article/:id'}
+        path="/article/:id"
         render={props => <Article {...props} articles={articles} />}
       />
       <Route component={NotMatch} />
