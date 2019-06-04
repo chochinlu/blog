@@ -3,7 +3,7 @@ import { Box, Card, Heading, Flex, Button } from 'rebass';
 import { StyledReactMarkdown, StyledLink } from './style';
 import styled from 'styled-components/macro';
 import axios from 'axios';
-import { issueUrl, formatedDate, requestConfig } from '../utils';
+import { issueUrl, commentUrl, formatedDate, requestConfig } from '../utils';
 
 const ArticleCard = props => (
   <Card
@@ -27,8 +27,13 @@ const ActionButton = ({ children, ...props }) => (
     fontSize="body1"
     borderRadius="none"
     border={1}
-    mx={2}
     mb={3}
+    css={`
+      cursor: pointer;
+      :focus {
+        outline: none;
+      }
+    `}
     {...props}
   >
     {children}
@@ -105,7 +110,18 @@ const Article = props => {
           border-bottom: 1px solid ${props => props.theme.colors.text};
         `}
       >
-        <Heading as="h3" fontSize="body1" mr={2}>
+        <Heading
+          as="h3"
+          fontSize="body1"
+          mr={2}
+          onClick={() =>
+            window.open(commentUrl(props.match.params.id), '_blank')
+          }
+          css={`
+            cursor: pointer;
+            text-decoration: underline;
+          `}
+        >
           Issue {props.match.params.id}
         </Heading>
         <Heading as="h3" fontSize="body1" fontWeight={1} mr={2}>
@@ -128,20 +144,19 @@ const Article = props => {
   );
 
   const actions = (
-    <Flex>
+    <Flex mx={2}>
       <ActionButton>
-        <StyledLink to="/">Back</StyledLink>
+        <StyledLink to="/">上一頁</StyledLink>
       </ActionButton>
       <ActionButton
         onClick={() => window.scrollTo(0, articleRef.current.offsetTop)}
-        css={`
-          cursor: pointer;
-          :focus {
-            outline: none;
-          }
-        `}
       >
-        Top
+        回頂端
+      </ActionButton>
+      <ActionButton
+        onClick={() => window.open(commentUrl(props.match.params.id), '_blank')}
+      >
+        留言
       </ActionButton>
     </Flex>
   );
