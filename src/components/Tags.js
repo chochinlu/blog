@@ -11,7 +11,7 @@ const url = label =>
 
 const Tags = props => (
   <Card border={2} borderColor="text" px={2} pt={5} pb={5} m={2}>
-    <Flex mb={2} flexDirection="column">
+    <Flex mb={2} flexDirection={['row', 'row', 'row', 'column']}>
       {tagList.map((tag, index) => (
         <Tag
           flex={1}
@@ -21,7 +21,7 @@ const Tags = props => (
           border={1}
           fontSize="body1"
           borderRadius="none"
-          mb={index === tagList.length - 1 ? 0 : 2}
+          mb={[index === tagList.length - 1 ? 0 : 2, 1]}
           onClick={e => props.setUrl(url(tag))}
         >
           <StyledLink to="/">{tag}</StyledLink>
@@ -38,6 +38,7 @@ const Tags = props => (
         border={1}
         onClick={e => props.setUrl(props.initUrl)}
         css={`
+          cursor: pointer;
           :focus {
             outline: none;
           }
