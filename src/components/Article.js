@@ -58,10 +58,12 @@ const Article = props => {
     if (!props.articles) {
       getResult(id);
     } else {
-      let result = props.articles.find(a => a.number === parseInt(id, 10));
-      result ? setArticle(result) : getResult(id);
+      if (!article) {
+        let result = props.articles.find(a => a.number === parseInt(id, 10));
+        result ? setArticle(result) : getResult(id);
+      }
     }
-  }, [props.articles, props.match.params.id]);
+  }, [article, props.articles, props.match.params.id]);
 
   useEffect(() => {
     window.scrollTo(0, articleRef.current.offsetTop);
