@@ -2,7 +2,7 @@ import React from 'react';
 import { Flex, Box, Card, Heading } from 'rebass';
 import { Link } from 'react-router-dom';
 import { format } from 'date-fns';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 
 const formatedDate = date => format(date, 'YYYY-MM-DD');
 

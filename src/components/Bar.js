@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, Link as HtmlLink, Card, Flex, Box } from 'rebass';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 import { StyledLink } from './style';
 
 const Bar = props => (

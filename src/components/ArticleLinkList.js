@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { Box, Flex, Heading } from 'rebass';
 import ArticleLink from './ArticleLink';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 import ActionButton from './ActionButton';
 
 const ArticleLinkList = ({ fetching, navLinks, articles, setUrl }) => {

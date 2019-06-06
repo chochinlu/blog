@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from 'rebass';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 
 const ActionButton = props => {
   const handleClick = e => {

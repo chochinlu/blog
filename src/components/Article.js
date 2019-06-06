@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
 import { StyledReactMarkdown, StyledLink } from './style';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 import axios from 'axios';
 import { issueUrl, commentUrl, formatedDate, requestConfig } from '../utils';
 

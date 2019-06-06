@@ -1,7 +1,7 @@
 import React from 'react';
 import { Card, Button, Flex } from 'rebass';
 import { Tag } from './style';
-import styled from 'styled-components/macro';
+import 'styled-components/macro';
 import { StyledLink } from './style';
 
 const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
