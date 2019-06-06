@@ -49,11 +49,12 @@ const ArticleLinkList = ({ fetching, navLinks, articles, setUrl }) => {
       )}
 
       {articles &&
+        !fetching &&
         articles.map(article => (
           <ArticleLink key={article.id} article={article} />
         ))}
 
-      {navLinks && (
+      {navLinks && !fetching && (
         <Flex px={2} mb={2}>
           {buttons().map(link => (
             <ActionButton key={link.rel} setUrl={setUrl} url={link.url}>
