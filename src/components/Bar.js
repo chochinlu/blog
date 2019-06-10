@@ -4,7 +4,20 @@ import 'styled-components/macro';
 import { StyledLink } from './style';
 
 const Bar = props => (
-  <Card border={2} borderColor="text" px={2} pb={[1, 1, 1, 5]} m={2}>
+  <Card
+    border={2}
+    borderColor="text"
+    px={2}
+    pb={[1, 1, 1, 5]}
+    m={2}
+    css={`
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      :hover {
+        box-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+        background-color: rgba(255, 255, 255, 0.8);
+      }
+    `}
+  >
     <Flex
       flexDirection={['row', 'row', 'row', 'column']}
       alignItems={['center', 'center', 'center', 'flex-start']}

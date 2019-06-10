@@ -24,6 +24,13 @@ const Tags = props => {
             fontSize="body1"
             borderRadius="none"
             mb={[index === tagList.length - 1 ? 0 : 2, 1]}
+            css={`
+              transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+              :hover {
+                background-color: ${props => props.theme.colors.primary};
+                color: ${props => props.theme.colors.text};
+              }
+            `}
             onClick={e => {
               props.setUrl(url(tag));
               setCurrentTag(tag);
@@ -48,6 +55,11 @@ const Tags = props => {
           }}
           css={`
             cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            :hover {
+              background-color: ${props => props.theme.colors.primary};
+              color: ${props => props.theme.colors.text};
+            }
             :focus {
               outline: none;
             }
