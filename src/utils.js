@@ -11,6 +11,9 @@ export const issueUrl = id =>
 export const commentUrl = id =>
   `https://github.com/chochinlu/blog/issues/${id}`;
 
+export const labelUrl = label =>
+  `https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10&labels=${label}`;
+
 const t = `${process.env.REACT_APP_TA}${process.env.REACT_APP_TB}`;
 
 export const requestConfig = {

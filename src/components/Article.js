@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
-import { StyledReactMarkdown, StyledLink } from './style';
+import { StyledReactMarkdown, StyledLink, Tag } from './style';
 import 'styled-components/macro';
 import axios from 'axios';
 import { issueUrl, commentUrl, formatedDate, requestConfig } from '../utils';
+import { labelUrl as url } from '../utils';
 
 const ArticleCard = props => (
   <Card
@@ -143,6 +144,27 @@ const Article = props => {
     />
   );
 
+  const labels = (
+    <Card mx={3} borderTop={2} borderColor="text" py={5}>
+      {article.labels.map(label => (
+        <Button
+          key={label.name}
+          color="text"
+          bg={`#${label.color}`}
+          mr={2}
+          border={0}
+          fontSize="body1"
+          borderRadius="none"
+          onClick={e => {
+            props.setUrl(url(label.name));
+          }}
+        >
+          <StyledLink to="/">{label.name}</StyledLink>
+        </Button>
+      ))}
+    </Card>
+  );
+
   const actions = (
     <Flex mx={2}>
       <ActionButton>
@@ -166,6 +188,7 @@ const Article = props => {
       <ArticleCard>
         {head}
         {content}
+        {labels}
       </ArticleCard>
       {actions}
     </Box>

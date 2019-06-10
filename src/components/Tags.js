@@ -3,11 +3,9 @@ import { Card, Button, Flex } from 'rebass';
 import { Tag } from './style';
 import 'styled-components/macro';
 import { StyledLink } from './style';
+import { labelUrl as url } from '../utils';
 
 const tagList = ['React', 'JavaScript', 'CSS', 'NodeJS'];
-
-const url = label =>
-  `https://api.github.com/repos/chochinlu/blog/issues?page=1&per_page=10&labels=${label}`;
 
 const Tags = props => {
   const [currentTag, setCurrentTag] = useState('all');

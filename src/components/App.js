@@ -75,7 +75,9 @@ function App() {
       />
       <Route
         path="/article/:id"
-        render={props => <Article {...props} articles={articles} />}
+        render={props => (
+          <Article {...props} articles={articles} setUrl={setUrl} />
+        )}
       />
       <Route component={NotMatch} />
     </Switch>
