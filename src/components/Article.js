@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Box, Card, Heading, Flex, Button } from 'rebass';
-import { StyledReactMarkdown, StyledLink, Tag } from './style';
+import { StyledReactMarkdown, StyledLink } from './style';
 import 'styled-components/macro';
 import axios from 'axios';
 import { issueUrl, commentUrl, formatedDate, requestConfig } from '../utils';
@@ -145,7 +145,7 @@ const Article = props => {
   );
 
   const labels = (
-    <Card mx={3} borderTop={2} borderColor="text" py={5}>
+    <Card mx={3} borderTop={2} borderColor="text" pt={5} pb={2}>
       {article.labels.map(label => (
         <Button
           key={label.name}
