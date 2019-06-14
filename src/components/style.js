@@ -62,8 +62,8 @@ export const StyledReactMarkdown = styled(ReactMarkdown)`
     border-bottom: 2px solid ${props => props.theme.colors.divider};
   }
 
-  ul {
-    padding-left: ${props => props.theme.space[4]};
+  ul, ol {
+    padding-left: ${props => props.theme.space[5]};
   }
 
   pre, code {
