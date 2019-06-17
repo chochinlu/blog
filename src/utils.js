@@ -3,7 +3,7 @@ import { format } from 'date-fns';
 const baseUrl = 'https://api.github.com/repos/chochinlu/blog/issues';
 
 // for article list
-export const initUrl = `${baseUrl}?page=1&per_page=10`;
+export const initUrl = `${baseUrl}?page=1&per_page=10&sort=updated`;
 
 export const issueUrl = id => `${baseUrl}/${id}`;
 
